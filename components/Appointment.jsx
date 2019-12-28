@@ -3,30 +3,26 @@ import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
 
-const Group = ({ title, items }) => {
+const Appointment = ({ id, avatar, fullname, diagnosis, time, active }) => {
     return (<GroupBlock>
-    <GroupTitle>{title}</GroupTitle>
-    {items.map((item, index)=>{
-      return <GroupItem key={index}>
-        <Avatar source={{uri: item.avatar}} />
+      <GroupItem key={id}>
+        <Avatar source={{uri: avatar}} />
         <View style={{flex: 1}}>
-          <FullName>{item.fullname}</FullName>
-          <GrayText>{item.diagnosis}</GrayText>
+          <FullName>{fullname}</FullName>
+          <GrayText>{diagnosis}</GrayText>
         </View>
-        <GroupDate active={item.active}>{item.time}</GroupDate>
+        <GroupDate active={active}>{time}</GroupDate>
     </GroupItem>
-  })}
  
   </GroupBlock>);
 }
 
-export default Group;
+export default Appointment;
 
 const GroupBlock = styled.View`
-  padding: 0 20px;
   margin-bottom: 25px;
+  padding: 0 20px;
 `;
-
 const GroupItem = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -35,7 +31,7 @@ const GroupItem = styled.TouchableOpacity`
   border-bottom-color: #f3f3f3;
 `;
 const FullName = styled.Text`
-  font-weight: 600;
+  font-weight: bold;
   font-size: 16px;
   color: #000000;
 `;
@@ -44,12 +40,6 @@ const Avatar = styled.Image`
   width: 40px;
   height: 40px;
   margin-right: 20px;
-`;
-
-const GroupTitle = styled.Text`
-  font-weight: 800;
-  font-size: 22px;
-  color: #000000;
 `;
 
 const GrayText = styled.Text`
@@ -68,7 +58,7 @@ const GroupDate = styled.Text`
   line-height: 30px;
 `;
 
-Group.defaultProps = {
+Appointment.defaultProps = {
     title: 'Untitled',
     items: []
 }

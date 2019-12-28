@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SectionList } from 'react-native';
 import styled from 'styled-components/native';
 import Appointment from './components/Appointment';
 import SectionTitle  from './components/Sectiontitle';
+import { Ionicons } from '@expo/vector-icons';
 const DATA = [
   {
     title: '16 сентября',
@@ -70,10 +71,29 @@ export default function App() {
         <SectionTitle>{title}</SectionTitle>
         )}
       />
+      <PlusButton>
+      <Ionicons name="ios-add" size={36} color="white" />
+      </PlusButton>
+
     </Container>
   );
 }
 
+const PlusButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 64px;
+  height: 64px;
+  background: #2A86FF;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  shadow-color: #2A86FF;
+  shadow-opacity: 0.8;
+  shadow-radius: 3.5;
+  elevation: 5;
+`;
 const Container = styled.View`
   flex: 1;
   margin-top: 0px;
